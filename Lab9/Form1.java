@@ -29,11 +29,11 @@ public class Form {
         loginButton.setBounds(150, 150, 100, 30);
         cp.add(loginButton);
 
-        // loginButton.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-        //         System.out.println("Login button clicked");
-        //     }
-        // });
+        loginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Login button clicked");
+            }
+        });
         
         j.setSize(350, 250);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
