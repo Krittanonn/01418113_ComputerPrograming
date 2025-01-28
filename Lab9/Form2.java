@@ -1,9 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.*;
 
 public class Form2 {
     public Form2(){
@@ -51,21 +50,29 @@ public class Form2 {
         provinceComboBox.setBounds(150, 150, 150, 30);
         cp.add(provinceComboBox);
 
-        
+        provinceComboBox.setSelectedIndex(findProvinceIndex("Bangkok"));
 
         JButton loginButton = new JButton("OK");
         loginButton.setBounds(150, 250, 100, 30);
         cp.add(loginButton);  
 
-        // loginButton.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-        //     }
-        // });
+        loginButton.addActionListener(e -> {
+            String name = tfName.getText();
+            String carLicense = tfCarLicense.getText();
+            String selectedProvince = (String) provinceComboBox.getSelectedItem();
+            String carType = r1.isSelected() ? "Car" : "Bike";
+            
+            JOptionPane.showMessageDialog(null, 
+                "Name: " + name + "\nCar License: " + carLicense +
+                "\nProvince: " + selectedProvince + "\nCar Type: " + carType, 
+                "Information", 
+                JOptionPane.INFORMATION_MESSAGE);
+        });
         
-        // j.setSize(350, 320);
-        // j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // j.setLocationRelativeTo(null);
-        // j.setVisible(true);
+        j.setSize(350, 320);
+        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j.setLocationRelativeTo(null);
+        j.setVisible(true);
     }
 
     // ฟังก์ชันสำหรับอ่านข้อมูลจังหวัดจากไฟล์ CSV
@@ -86,6 +93,22 @@ public class Form2 {
             e.printStackTrace();
         }
 
+        // if (provinces.contains("Bangkok")) {
+        //     provinces.remove("Bangkok");
+        //     provinces.add(0, "Bangkok");
+        // }
+
         return provinces.toArray(new String[0]);
     }
+
+    private int findProvinceIndex(String provinceName) {
+        String[] provinces = getProvinces();
+        for (int i = 0; i < provinces.length; i++) {
+            if (provinces[i].equalsIgnoreCase(provinceName)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+    
 }
