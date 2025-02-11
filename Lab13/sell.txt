@@ -1,0 +1,5 @@
+Plush Dog		$5.5		3		$16.5
+Kitty Litter		$6.0		2		$12.0
+Soy Sauce		$3.75		3		$11.25
+asdasdasd		$2.0		3		$6.0
+1231231231231		$3.0		4		$12.0
